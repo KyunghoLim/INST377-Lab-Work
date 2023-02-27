@@ -311,34 +311,18 @@ form label {
     }
     .box {
       background-color: rgba(245, 245, 220, 0.40);
-      border: 2px dashed;
-      border-radius: 4px;
-    
-      width: fit-content;
-      height:fit-content;
-      padding: 1.5rem;
-      margin: 0 auto;
+      width: 100%;
+      width: fill-available;
+      align-items: flex-start;
     }
     .right_section {
       background-color: rgba(39, 245, 157, 0.28);
       flex: 1 1 auto;
-      margin: 1rem;
-      align-items: center;
-      max-width: 450px;
       justify-content: flex-start;
-      display: flex;
-      flex-direction: column;
     }
     .left_section {
       background-color: rgba(39, 245, 157, 0.28);
       flex: 0 1 auto;
-      margin: 1rem;
-      padding: 1.5rem;
-      max-width: 450px;
-      justify-content: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
     
 }
