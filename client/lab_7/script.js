@@ -37,6 +37,7 @@ function getRandomIntInclusive(min, max) {
     const filterDataButton = document.querySelector('#filter');
     const loadDataButton = document.querySelector('#data_load');
     const generateListButton = document.querySelector('#generate');
+    const textField = document.querySelector('#resto');
   
     const loadAnimation = document.querySelector('#data_load_animation');
     loadAnimation.style.display = 'none';
@@ -72,6 +73,13 @@ function getRandomIntInclusive(min, max) {
       console.log('generate new list');
       const restaurantsList = cutRestaurantList(currentList);
       injectHTML(restaurantsList);
+    })
+
+    textField.addEventListener('input', (event) => {
+        console.log('input', event.target.value);
+        const newList = filterList(currentList, event.target.value);
+        console.log(newList);
+        injectHTML(newList);
     })
   }
   
