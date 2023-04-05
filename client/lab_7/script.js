@@ -42,10 +42,9 @@ async function mainEvent() {
 
   const loadAnimation = document.querySelector("#data_load_animation");
   loadAnimation.style.display = "none";
-  generateListButton.classList.add("hidden");
+  generateListButton.classList.add('hidden');
 
   let storedList = [];
-
   let currentList = [];
 
   loadDataButton.addEventListener("click", async (submitEvent) => {
@@ -81,7 +80,7 @@ async function mainEvent() {
 
   generateListButton.addEventListener("click", (event) => {
     console.log("generate new list");
-    const restaurantsList = cutRestaurantList(storedList);
+    currentList = cutRestaurantList(storedList);
     console.log(currentList);
     injectHTML(currentList);
   });
