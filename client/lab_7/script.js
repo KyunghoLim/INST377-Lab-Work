@@ -35,7 +35,6 @@ async function mainEvent() {
   // the async keyword means we can make API requests
 
   const mainForm = document.querySelector(".main_form"); // This class name needs to be set on your form before you can listen for an event on it
-  const filterDataButton = document.querySelector("#filter");
   const loadDataButton = document.querySelector("#data_load");
   const generateListButton = document.querySelector("#generate");
   const textField = document.querySelector("#resto");
@@ -44,7 +43,12 @@ async function mainEvent() {
   loadAnimation.style.display = "none";
   generateListButton.classList.add('hidden');
 
-  let storedList = [];
+  const storedData = localStorage.getItem('storedData');
+  const parsedData = JSON.parse(storedData);
+  if (parsedData.length > 0) {
+    generateListButton.classList.remove("hidden");
+  }
+
   let currentList = [];
 
   loadDataButton.addEventListener("click", async (submitEvent) => {
@@ -56,27 +60,13 @@ async function mainEvent() {
       "https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json"
     );
 
-    storedList = await results.json();
-    if (storedList.length > 0) {
-      generateListButton.classList.remove("hidden");
-    }
-
+    const storedList = await results.json();
+    localStorage.setItem('storedData', JSON.stringify(storedList));
+    
     loadAnimation.style.display = "none";
-    console.table(storedList);
+    // console.table(storedList);
   });
 
-  filterDataButton.addEventListener("click", (event) => {
-    console.log("clicked filterButton");
-
-    const formData = new FormData(mainForm);
-    const formProps = Object.fromEntries(formData);
-
-    console.log(formProps);
-    const newList = filterList(currentList, formProps.resto);
-
-    console.log(newList);
-    injectHTML(newList);
-  });
 
   generateListButton.addEventListener("click", (event) => {
     console.log("generate new list");
