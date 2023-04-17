@@ -33,7 +33,6 @@ function cutRestaurantList(list) {
 
 async function mainEvent() {
   // the async keyword means we can make API requests
-
   const mainForm = document.querySelector(".main_form"); // This class name needs to be set on your form before you can listen for an event on it
   const loadDataButton = document.querySelector("#data_load");
   const generateListButton = document.querySelector("#generate");
@@ -67,10 +66,9 @@ async function mainEvent() {
     // console.table(storedList);
   });
 
-
   generateListButton.addEventListener("click", (event) => {
     console.log("generate new list");
-    currentList = cutRestaurantList(storedList);
+    currentList = cutRestaurantList(parsedData);
     console.log(currentList);
     injectHTML(currentList);
   });
